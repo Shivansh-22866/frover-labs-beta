@@ -56,7 +56,7 @@ The `useAsyncButton` hook returns a mutable ref object containing the following 
 | `setBgColorClass` | Function             | Setter function to update the background color CSS class of the button.                         |
 
 ---
-# CustomButton Component
+## CustomButton Component
 
 The `CustomButton` component is a custom button component built on top of Material-UI's `Button` and `CircularProgress` components, designed for submitting forms or handling asynchronous actions.
 
@@ -82,7 +82,7 @@ The `CustomButton` component accepts the following props:
 | `textColor`       | String     | No       | N/A           | Custom text color for the button.                                                                 |
 
 ---
-# CustomCard Component
+## CustomCard Component
 
 The `CustomCard` component is a custom card component designed using Material-UI's `Card`, `CardContent`, `CardMedia`, and `Typography` components, featuring dynamic content, images, and interactive elements.
 
@@ -130,7 +130,7 @@ The `CustomDialog` component accepts the following props:
 |-----------|--------|----------|---------------|------------------------------------------|
 | `content` | Object | Yes      | N/A           | Object containing dialog content details, such as `title`, `userImage`, `userName`, `email`, and `buttons`. |
 
-# CustomInput Component
+## CustomInput Component
 
 The `CustomInput` component is a customizable input field component that supports various input types and validation rules, including password visibility toggle and error handling.
 
@@ -166,7 +166,7 @@ The `options` object passed to `CustomInput` can contain the following propertie
 - `passwordRequirements`: Object specifying password requirements (`requireCapitalLetter`, `requireSymbol`, `requireNumber`).
 
 ---
-# DynamicForm Component
+## DynamicForm Component
 
 The `DynamicForm` component is a dynamic form builder that allows users to input various details and generate a JSON representation of the form data. It includes sections for YouTube and Instagram posts, which can be dynamically added or removed.
 
@@ -220,3 +220,153 @@ Removes an item from either `instagramPosts` or `instagramStories` based on the 
 Generates a JSON representation of the current form data (`formData`) and logs it to the console.
 
 ---
+## CustomPDF Component
+
+The `CustomPDF` component in React generates a PDF document based on the data provided through props. It includes detailed sections covering an Influencer Marketing Agreement, formatted using the `@react-pdf/renderer` library for PDF generation. This component is responsive, rendering either a detailed HTML view or a PDF preview based on screen size.
+
+## Features
+
+- **Dynamic Content:** Generates a comprehensive Influencer Marketing Agreement based on provided form data.
+- **Styling:** Utilizes custom styles defined in a `StyleSheet` object for consistent formatting across the document.
+- **External Font:** Registers an external font (`Oswald`) to enhance typographical styling.
+- **Responsive Design:** Adjusts content display based on screen size using `react-responsive`.
+
+## Dependencies
+
+- `@react-pdf/renderer`: For generating PDF documents in React.
+- `react-responsive`: For determining the screen size and adjusting content layout accordingly.
+- `@mui/material`: Used for rendering the download button.
+
+---
+## Footer Component
+
+The `Footer` component in this application is responsible for displaying an image icon in the footer section. It utilizes the `next/image` component from Next.js for optimized image handling.
+
+## Component File
+
+**File:** `Footer.jsx`
+
+```jsx
+// Footer.jsx
+
+import React from 'react';
+import Image from 'next/image';
+
+/**
+ * Footer component displaying an image icon.
+ * 
+ * @param {Object} props - Component props.
+ * @param {string} props.imageUrl - URL of the image to display.
+ * @param {string} props.altText - Alternate text for the image (for accessibility).
+ * @returns {JSX.Element} Rendered Footer component.
+ */
+const Footer = ({ imageUrl, altText }) => {
+  return (
+    <>
+      <Image src={imageUrl} alt={altText} width={32} height={32} className='sidebar-icon'/>
+    </>
+  );
+};
+
+export default Footer;
+```
+
+---
+## Navbar
+
+The `Navbar` component in this application renders a fixed sidebar navigation menu with links and an optional footer section.
+
+## Component File
+
+**File:** `Navbar.jsx`
+
+```jsx
+// Navbar.jsx
+
+import React from 'react';
+import NavbarIcon from './NavbarIcon';
+
+/**
+ * NavbarIcon component renders an icon with a tooltip.
+ * 
+ * @param {Object} props - Component props.
+ * @param {React.ReactNode} props.icon - Icon element to render.
+ * @param {string} [props.text='tooltip 💡'] - Tooltip text to display (optional, default is 'tooltip 💡').
+ * @returns {JSX.Element} Rendered NavbarIcon component.
+ */
+function NavbarIcon({ icon, text = 'tooltip 💡' }) {
+  return (
+    <div className='sidebar-icon group'>
+      {icon}
+      <span className='sidebar-tooltip group-hover:scale-100'>{text}</span>
+    </div>
+  );
+}
+
+/**
+ * Navbar component renders a fixed sidebar navigation menu.
+ * 
+ * @param {Object} props - Component props.
+ * @param {string} props.id - ID used to construct links.
+ * @param {Array<Object>} props.links - Array of link objects.
+ * @param {React.ReactNode} props.footer - Footer content to display at the bottom of the navbar.
+ * @returns {JSX.Element} Rendered Navbar component.
+ */
+export default function Navbar({ id, links, footer }) {
+  if (!id) {
+    return null;
+  }
+
+  return (
+    <nav className="">
+      <div className="fixed top-0 left-0 h-screen w-16 flex flex-col justify-between bg-[#202225]">
+        <ul className="">
+          {links.map((link, index) => (
+            <li key={index}>
+              <a href={`/${id}${link.href}`}>
+                <NavbarIcon icon={link.icon} text={link.text} />
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div>
+          {footer}
+        </div>
+      </div>
+    </nav>
+  );
+}
+```
+
+---
+## NavbarIcon Component
+
+The `NavbarIcon` component renders an icon with an optional tooltip.
+
+## Component File
+
+**File:** `NavbarIcon.jsx`
+
+```jsx
+// NavbarIcon.jsx
+
+import React from 'react';
+
+/**
+ * NavbarIcon component renders an icon with an optional tooltip.
+ * 
+ * @param {Object} props - Component props.
+ * @param {React.ReactNode} props.icon - Icon element to render.
+ * @param {string} [props.text='tooltip 💡'] - Tooltip text to display (optional, default is 'tooltip 💡').
+ * @returns {JSX.Element} Rendered NavbarIcon component.
+ */
+const NavbarIcon = ({ icon, text = 'tooltip 💡' }) => {
+  return (
+    <div className='sidebar-icon group'>
+      {icon}
+      <span className='sidebar-tooltip group-hover:scale-100'>{text}</span>
+    </div>
+  );
+};
+
+export default NavbarIcon;
