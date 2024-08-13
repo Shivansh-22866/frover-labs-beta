@@ -370,3 +370,10 @@ const NavbarIcon = ({ icon, text = 'tooltip 💡' }) => {
 };
 
 export default NavbarIcon;
+```
+
+
+# Using npm package
+
+Simply write `npx frover-labs-beta {component name}` where `{component name}` is any one of the components mentioned above.
+The command will enter the component in the `/src/components` folder
