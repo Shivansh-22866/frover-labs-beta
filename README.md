@@ -421,10 +421,6 @@ const NavbarIcon = ({ icon, text = 'tooltip 💡' }) => {
 export default NavbarIcon;
 ```
 
-<<<<<<< HEAD
----
-=======
->>>>>>> d59324db09f73ed8f38ca1692972c133a7bbda06
 
 # Using npm package
 
