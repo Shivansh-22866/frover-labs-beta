@@ -55,6 +55,55 @@ The `useAsyncButton` hook returns a mutable ref object containing the following 
 | `setSubText`     | Function             | Setter function to update the additional text or subtext of the button.                         |
 | `setBgColorClass` | Function             | Setter function to update the background color CSS class of the button.                         |
 
+### Example
+
+```
+import React from 'react';
+import AsyncButton from './AsyncButton'; // Adjust the path according to your file structure
+import useAsyncButton from './useAsyncButton'; // Adjust the path according to your file structure
+
+const ExampleComponent = () => {
+    // Initialize the custom hook
+    const buttonRef = useAsyncButton('Click Me!');
+
+    // Function to simulate an asynchronous operation
+    const handleAsyncAction = async () => {
+        const { current: buttonState } = buttonRef;
+
+        // Set button to loading state
+        buttonState.setLoading(true);
+        buttonState.setText('Loading...');
+        buttonState.setBgColorClass('bg-gray-500');
+
+        try {
+            // Simulate an async action (e.g., API call)
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+            
+            // Set button to success state
+            buttonState.setText('Success!');
+            buttonState.setBgColorClass('bg-green-500');
+            buttonState.setSubText('Operation completed');
+        } catch (error) {
+            // Handle error and update button state
+            buttonState.setText('Error');
+            buttonState.setBgColorClass('bg-red-500');
+            buttonState.setSubText('Something went wrong');
+        } finally {
+            // Reset button state
+            buttonState.setLoading(false);
+        }
+    };
+
+    return (
+        <div className="flex justify-center items-center h-screen">
+            <AsyncButton buttonRef={buttonRef} onClickRun={handleAsyncAction} />
+        </div>
+    );
+};
+
+export default ExampleComponent;
+```
+
 ---
 ## CustomButton Component
 
