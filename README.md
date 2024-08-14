@@ -55,6 +55,7 @@ The `useAsyncButton` hook returns a mutable ref object containing the following 
 | `setSubText`     | Function             | Setter function to update the additional text or subtext of the button.                         |
 | `setBgColorClass` | Function             | Setter function to update the background color CSS class of the button.                         |
 
+<<<<<<< HEAD
 ### Example
 
 ```
@@ -104,6 +105,8 @@ const ExampleComponent = () => {
 export default ExampleComponent;
 ```
 
+=======
+>>>>>>> d59324db09f73ed8f38ca1692972c133a7bbda06
 ---
 ## CustomButton Component
 
@@ -421,7 +424,10 @@ const NavbarIcon = ({ icon, text = 'tooltip 💡' }) => {
 export default NavbarIcon;
 ```
 
+<<<<<<< HEAD
 ---
+=======
+>>>>>>> d59324db09f73ed8f38ca1692972c133a7bbda06
 
 # Using npm package
 
