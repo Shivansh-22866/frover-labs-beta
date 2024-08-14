@@ -1,6 +1,6 @@
 {
     "name": "frover-labs-beta",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "Frover Labs's test",
     "main": "index.js",
     "bin": {
