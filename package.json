@@ -12,5 +12,7 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "dependencies": {}
+    "dependencies": {
+        "frover-labs-beta": "^1.0.6"
+    }
 }
